@@ -1,38 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
+body {
+  margin: 0;
+  font-family: "Roboto", "helvetica";
+  font-weight: 300;
+  background: #fafafa;
+  padding-bottom: 100px;
+}
+
+:root {
+  --button-color: #0095f6;
+  --button-dark-color: #068ee9;
+  --post-width: 50%;
+  --post-min-width: 400px;
+  --post-max-width: 700px;
+}
+
 .App {
-  text-align: center;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid lightgrey;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navbar img {
+  object-fit: contain;
+  width: 115px;
+  margin-left: 2em;
+}
+
+/* navbar buttons */
+.navbar__buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar__buttons div {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.navbar__buttons div:first-child {
+  margin-right: 2rem;
+}
+
+/* POST */
+.post {
+  margin: auto;
+  width: var(--post-width);
+  max-width: var(--post-max-width);
+  min-width: var(--post-min-width);
+  border: 1px solid lightgrey;
+  background: #fff;
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-bottom: 2px solid lightgrey;
+}
+
+.post__avatar {
+  margin-right: 15px;
+}
+
+.post__image img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.post__caption {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.post__caption span {
+  margin-left: 10px;
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0 15px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.modal__container {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  padding: 13px;
+  background: rgba(75, 75, 75, 0.5);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2rem;
+  width: 350px;
+}
+
+.modal img {
+  margin: auto;
+  margin-bottom: 1.6rem;
+  width: 60%;
+}
+
+.modal input {
+  margin-bottom: 8px;
+  padding: 12px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  outline: none;
+  background: #fafafa;
+  font-size: 16px;
+  color: #555;
+}
+
+.modal input[type="submit"] {
+  background: var(--button-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal input[type="submit"]:hover {
+  background: var(--button-dark-color);
+}
+
+/* logout */
+.logout {
+  display: flex;
+  align-items: center;
+}
+
+.profile__avatar {
+  margin: 0;
+  padding: 0;
+}
+
+/* ImageUpload */
+.img__upload {
+  width: var(--post-width);
+  max-width: var(--post-max-width);
+  min-width: var(--post-min-width);
+  border: 1px solid lightgray;
+  background: #fff;
+  margin: 20px auto;
+  padding: 30px 0;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Image uploading Progress */
+.img__upload__progress {
+  height: 3px;
+  width: 70%;
+  margin-bottom: 1.8rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.img__upload__progress div {
+  transition: all 0.5s;
+  height: 100%;
+  width: 0%;
+  background: #5555;
+  border-radius: 12px;
+}
+
+/* Image Upload Inputs */
+.img__upload input {
+  margin-left: 10px;
+  padding: 10px 10px;
+  font-size: 14px;
+}
+
+/* Input file */
+.img__upload input[type="file"] {
+  display: none;
+}
+
+.img__upload label[for="file"] {
+  padding: 6px 14px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  background: rgb(105, 105, 105);
+}
+
+.img__upload label[for="file"]:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Caption input */
+.img__upload__inputs input[type="text"] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.img__upload__inputs input[type="text"]:hover,
+.img__upload__inputs input[type="text"]:focus {
+  border-bottom: 1px solid rgb(153, 153, 153);
+}
+
+/* Image upload submit button */
+.img__upload__inputs input[type="button"] {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.img__upload__inputs input[type="button"]:hover {
+  background: lightgray;
+}
+
+/* Image upload name */
+.img__upload__name {
+  margin-bottom: 20px;
+}
+
+/* message box */
+.msg__box {
+  text-align: center;
+}
+
+/* Comment Box for post */
+
+.comment__box {
+  /* border: 1px solid red; */
+  display: flex;
+  border-top: 1px solid rgb(230, 230, 230);
+}
+
+.comment__box input[type="text"] {
+  flex: 2;
+}
+
+.comment__box input {
+  padding: 1.3rem;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: #fff;
+}
+
+.comment__box input[type="submit"] {
+  color: skyblue;
+  cursor: pointer;
+}
+
+.comment__enabled {
+  color: rgb(16, 145, 196) !important;
+}
+
+/* Comments text */
+.comments div {
+  padding: 4px 19px;
+}
+
+.comments div strong {
+  margin-right: 8px;
+}
+.comments div:last-child {
+  margin-bottom: 16px;
 }
