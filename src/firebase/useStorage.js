@@ -33,6 +33,7 @@ function useStorage(file, user, caption) {
           imgUrl: url,
           caption,
           createdAt: timestamp(),
+          likes: []
         });
       }
     );

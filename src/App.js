@@ -32,7 +32,7 @@ function App() {
   // For posts
   useEffect(() => {
     if (firestorePosts !== null) {
-      console.log(firestorePosts);
+      // console.log(firestorePosts);
       setPosts(firestorePosts);
     }
   }, [firestorePosts]);
@@ -52,11 +52,13 @@ function App() {
         <Post
           key={post.id}
           id={post.id}
+          email={post.email}
           username={post.username}
           imgUrl={post.imgUrl}
           user={user}
           caption={post.caption}
-          comments={posts.comments}
+          comments={post.comments}
+          likes={post.likes? post.likes : []}
         />
       ))}
 
